@@ -5,12 +5,12 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
+  ingressClassName: nginx
   rules:
-  - host: delete-task.devopsinsiders.online
-    http:
+  - http:
       paths:
       - pathType: Prefix
-        path: "/"
+        path: "/delete-task($|/.*|)"
         backend:
           service:
             name: delete-task
